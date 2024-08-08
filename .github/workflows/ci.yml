@@ -19,6 +19,11 @@ jobs:
         run: make format
       - name: Train
         run: make train
+      - name: update branch
+        env: 
+           NAME: ${{ secrets.MY_NAME }}
+           EMAIL: ${{ secrets.MY_EMAIL }}
+        run: make update-branch   MY_NAME=$NAME MY_EMAIL=$EMAIL
       - name: Evaluation
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
